@@ -1,5 +1,16 @@
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/NavbarComponent/NavbarComponent";
+import AppRoutes from "./routes/Routes";
+
 function App() {
-  return <div className="text-3xl font-bold underline">Hello world</div>;
+  return (
+    <Router>
+      <Navbar />
+      <div className="container mx-auto mt-8">
+        <AppRoutes />
+      </div>
+    </Router>
+  );
 }
 
 export default App;
