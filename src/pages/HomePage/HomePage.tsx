@@ -17,6 +17,15 @@ const accordionData = [
     content: "text",
   },
 ];
+/**
+ * HomePage Component
+ *
+ * This functional component renders a homepage that includes an Accordion and a Toggle switch.
+ * The Toggle allows the user to decide if multiple Accordion items can be opened at the same time.
+ * This page demonstrates the usage of state management in React and the composition of multiple
+ * components (Accordion and Toggle) within a functional component.
+ *
+ */
 
 function HomePage() {
   const [isOpenMultiple, setIsOpenMultiple] = useState<boolean>(false);

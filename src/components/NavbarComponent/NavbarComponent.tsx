@@ -1,9 +1,22 @@
+/**
+ * Navbar Component
+ *
+ * A navigation bar component for the MoviesApp. This component is responsible for
+ * displaying the main navigation links as well as a theme toggle button. The navigation
+ * links include 'Home' and 'About' and the theme toggle allows the user to switch between
+ * light and dark modes.
+ *
+ * Example Usage:
+ * <Navbar handleThemeOnClick={toggleTheme} isDark={isDark} />
+ *
+ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 
 interface NavbarProps {
-  handleThemeOnClick: () => void;
-  isDark: boolean;
+  handleThemeOnClick: () => void; // A function to toggle the theme mode
+  isDark: boolean; // Boolean flag indicating whether dark mode is active
 }
 
 const Navbar: React.FC<NavbarProps> = ({ handleThemeOnClick, isDark }) => {
@@ -22,11 +35,13 @@ const Navbar: React.FC<NavbarProps> = ({ handleThemeOnClick, isDark }) => {
               About
             </Link>
           </li>
+          {/* Button for toggling between light and dark modes */}
           <li>
             <button
               onClick={handleThemeOnClick}
               className="text-white hover:text-gray-200"
             >
+              {/* The button text changes based on the isDark prop */}
               {`${isDark ? "Light" : "Dark"} Mode`}
             </button>
           </li>
