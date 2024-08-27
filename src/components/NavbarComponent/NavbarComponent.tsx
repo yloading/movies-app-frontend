@@ -21,9 +21,9 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ handleThemeOnClick, isDark }) => {
   return (
-    <nav className="bg-[#378CE7] p-4">
+    <nav className="bg-gradient-to-r from-sky-500 to-indigo-500 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-white text-xl font-bold">MoviesApp</h1>
+        <h1 className="text-white text-xl font-bold">MovieScoreComparer</h1>
         <ul className="flex space-x-4">
           <li>
             <Link to="/" className="text-white hover:text-gray-200">

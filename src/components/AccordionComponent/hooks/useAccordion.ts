@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 /**
  * Custom hook to manage accordion state with support for single or multiple open items.
@@ -12,7 +12,11 @@ import { useEffect, useState } from "react";
  *   - `handleToggle`: A function to toggle the open/closed state of an accordion item.
  */
 
-export const useAccordion = (isOpenMultiple: boolean) => {
+export const useAccordion = (
+  isOpenMultiple: boolean,
+  items: { title: string; content: string }[],
+  defaultOpenIndex: number | null
+) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [multipleOpenedIndex, setMultipleOpenIndex] = useState<Array<number>>(
     []
@@ -20,9 +24,25 @@ export const useAccordion = (isOpenMultiple: boolean) => {
 
   // Reset the state when the `isOpenMultiple` parameter changes.
   useEffect(() => {
-    setOpenIndex(null);
-    setMultipleOpenIndex([]);
+    if (defaultOpenIndex) {
+      setOpenIndex(defaultOpenIndex - 1);
+      setMultipleOpenIndex([...multipleOpenedIndex, defaultOpenIndex - 1]);
+    } else {
+      setOpenIndex(null);
+      setMultipleOpenIndex([]);
+    }
   }, [isOpenMultiple]);
+
+  useEffect(() => {
+    if (
+      items &&
+      defaultOpenIndex &&
+      items.length >= defaultOpenIndex &&
+      items.length >= 1
+    ) {
+      setOpenIndex(defaultOpenIndex - 1);
+    }
+  }, [defaultOpenIndex, items]);
 
   /**
    * Toggles the open/closed state of an accordion item.

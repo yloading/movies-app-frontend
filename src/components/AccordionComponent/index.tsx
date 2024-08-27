@@ -32,16 +32,18 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   onClick,
 }) => {
   return (
-    <div className="border border-blue-200 rounded-md mb-4 shadow-lg">
+    <div className="border border-gray-200 rounded-md mb-4 shadow-lg">
       <div
-        className="bg-gray-100 dark:bg-gray-600 dark:text-white p-4 cursor-pointer flex justify-between items-center rounded-md"
+        className={`bg-gradient-to-r from-cyan-600 ${
+          isOpen() ? "to-blue-500" : "to-blue-200"
+        } text-white p-4 cursor-pointer flex justify-between items-center rounded-md hover:p-5 hover:bg-gradient-to-r hover:from-cyan-600 hover:to-blue-500 transition-all delay-75`}
         onClick={onClick}
       >
         <h2 className="text-lg font-semibold">{title}</h2>
         <span>{isOpen() ? "-" : "+"}</span>
       </div>
       {isOpen() && (
-        <div className="p-4 bg-white dark:bg-gray-300 rounded-b-md dark:rounded-b-sm">
+        <div className="p-4 bg-gray-100 dark:bg-blue-100 rounded-b-md dark:rounded-b-sm whitespace-pre-wrap">
           {content}
         </div>
       )}
@@ -69,13 +71,19 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 interface AccordionProps {
   items: { title: string; content: string }[];
   isOpenMultiple?: boolean;
+  defaultOpenIndex?: number | null;
 }
 
 const Accordion: React.FC<AccordionProps> = ({
   items,
   isOpenMultiple = false,
+  defaultOpenIndex = null,
 }) => {
-  const { handleToggle, isOpen } = useAccordion(isOpenMultiple);
+  const { handleToggle, isOpen } = useAccordion(
+    isOpenMultiple,
+    items,
+    defaultOpenIndex
+  );
 
   return (
     <div>

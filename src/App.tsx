@@ -8,7 +8,9 @@ function App() {
 
   return (
     <Router>
-      <div className={`${darkClassName} transition-all duration-300`}>
+      <div
+        className={`${darkClassName} transition-all duration-300 h-screen overflow-scroll`}
+      >
         <Navbar handleThemeOnClick={handleThemeOnClick} isDark={isDark} />
         <div className="container mx-auto mt-8">
           <AppRoutes />

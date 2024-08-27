@@ -13,7 +13,7 @@ import { useEffect, useMemo, useState } from "react";
  *  - `darkClassName`: A string containing the dark mode class to be applied conditionally.
  */
 
-export const useAppTheme = (): object => {
+export const useAppTheme = () => {
   /**
    * Memoized Theme Initialization
    *
@@ -78,7 +78,7 @@ export const useAppTheme = (): object => {
     }
   };
 
-  const darkClassName = isDark && "bg-gray-800 h-screen";
+  const darkClassName = isDark && "bg-gray-800";
 
   return {
     isDark,
