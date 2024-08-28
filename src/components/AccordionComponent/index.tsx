@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { useAccordion } from "./hooks/useAccordion";
 
 /**
@@ -69,7 +69,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
  */
 
 interface AccordionProps {
-  items: { title: string; content: string }[];
+  items: { title: string; content: string | ReactElement }[];
   isOpenMultiple?: boolean;
   defaultOpenIndex?: number | null;
 }

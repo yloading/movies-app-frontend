@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Accordion from "../../components/AccordionComponent";
 import Toggle from "../../components/ToggleComponent";
+import Tab from "../../components/TabComponent";
+import ImdbPage from "../ImdbPage";
 
 const accordionData = [
   {
     title: "What is React?",
-    content: "React is a JavaScript library for building user interfaces.",
+    content: <ImdbPage />,
   },
   {
     title: "What is a component?",
