@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 /**
  * Custom hook to manage accordion state with support for single or multiple open items.
@@ -14,7 +14,7 @@ import { useCallback, useEffect, useState } from "react";
 
 export const useAccordion = (
   isOpenMultiple: boolean,
-  items: { title: string; content: string }[],
+  items: { title: string; content: string | ReactElement }[],
   defaultOpenIndex: number | null
 ) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -31,6 +31,7 @@ export const useAccordion = (
       setOpenIndex(null);
       setMultipleOpenIndex([]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpenMultiple]);
 
   useEffect(() => {

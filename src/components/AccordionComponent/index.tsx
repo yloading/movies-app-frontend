@@ -20,7 +20,7 @@ import { useAccordion } from "./hooks/useAccordion";
 
 interface AccordionItemProps {
   title: string;
-  content: string;
+  content: string | ReactElement;
   isOpen: () => boolean;
   onClick: () => void;
 }
@@ -32,7 +32,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   onClick,
 }) => {
   return (
-    <div className="border border-gray-200 rounded-md mb-4 shadow-lg">
+    <div className="border border-gray-200 rounded-md mb-4 shadow-lg dark:border-gray-700">
       <div
         className={`bg-gradient-to-r from-cyan-600 ${
           isOpen() ? "to-blue-500" : "to-blue-200"
@@ -43,7 +43,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         <span>{isOpen() ? "-" : "+"}</span>
       </div>
       {isOpen() && (
-        <div className="p-4 bg-gray-100 dark:bg-blue-100 rounded-b-md dark:rounded-b-sm whitespace-pre-wrap">
+        <div className="p-4 bg-gray-300 dark:bg-gray-700 rounded-b-md dark:rounded-b-sm whitespace-pre-wrap">
           {content}
         </div>
       )}
