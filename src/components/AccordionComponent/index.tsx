@@ -39,11 +39,11 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         } text-white p-4 cursor-pointer flex justify-between items-center rounded-md hover:p-5 hover:bg-gradient-to-r hover:from-cyan-600 hover:to-blue-500 transition-all delay-75`}
         onClick={onClick}
       >
-        <h2 className="text-lg font-semibold">{title}</h2>
+        <h2 className="text-lg font-semibold font-serif">{title}</h2>
         <span>{isOpen() ? "-" : "+"}</span>
       </div>
       {isOpen() && (
-        <div className="p-4 bg-gray-300 dark:bg-gray-700 rounded-b-md dark:rounded-b-sm whitespace-pre-wrap">
+        <div className="p-4 bg-gray-300 dark:bg-gray-700 dark:text-white rounded-b-md dark:rounded-b-sm whitespace-pre-wrap">
           {content}
         </div>
       )}

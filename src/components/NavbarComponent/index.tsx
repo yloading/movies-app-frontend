@@ -12,7 +12,7 @@
  */
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavbarProps {
   handleThemeOnClick: () => void; // A function to toggle the theme mode
@@ -20,18 +20,36 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ handleThemeOnClick, isDark }) => {
+  const location = useLocation();
+
   return (
     <nav className="bg-gradient-to-r from-sky-500 to-indigo-500 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-white text-xl font-bold">MovieScoreComparer</h1>
+        <h1 className="text-white text-xl font-bold font-serif">
+          MovieScoreComparer
+        </h1>
         <ul className="flex space-x-4">
           <li>
-            <Link to="/" className="text-white hover:text-gray-200">
+            <Link
+              to="/"
+              className={`${
+                location.pathname === "/"
+                  ? "text-gray-700 hover:text-gray-700"
+                  : "text-slate-200 hover:text-slate-100"
+              }`}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about" className="text-white hover:text-gray-200">
+            <Link
+              to="/about"
+              className={`${
+                location.pathname === "/about"
+                  ? "text-gray-700 hover:text-gray-700"
+                  : "text-slate-200 hover:text-slate-100"
+              }`}
+            >
               About
             </Link>
           </li>
