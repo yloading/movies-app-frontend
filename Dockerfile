@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-WORKDIR /app/movies-app-frontend
+WORKDIR /app
 
 COPY package*.json ./
 
